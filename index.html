@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kohei Yamashita — Futures &amp; Foresight / Wine &amp; Sake</title>
+<meta name="description" content="Kohei Yamashita. Building tools for demand & decisions. Wine & sake gatherings in Tokyo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FDFDFB;
+    --ink: #1C1B19;
+    --quiet: #8E8B84;
+    --hairline: #E4E2DC;
+    --amp: #722F37; /* wine — ampersands only */
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 300;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+  /* ---- ghost ampersand, same as the card ---- */
+  .ghost {
+    position: fixed;
+    right: -8vw;
+    top: -6vh;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: min(90vh, 120vw);
+    line-height: 1;
+    color: var(--ink);
+    opacity: 0.045;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  main {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    padding: 18vh 28px 64px;
+    display: flex;
+    flex-direction: column;
+  }
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 9vw, 44px);
+    letter-spacing: 0.02em;
+  }
+  .name-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.32em;
+    margin-top: 10px;
+  }
+  .loc {
+    font-size: 11px;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  .lines { margin-top: 56px; display: flex; flex-direction: column; gap: 30px; }
+  .role {
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .role .amp {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-transform: none;
+    font-size: 19px;
+    color: var(--amp);
+    padding: 0 2px;
+    letter-spacing: 0;
+  }
+  .desc {
+    font-size: 13px;
+    color: var(--quiet);
+    margin-top: 6px;
+    line-height: 1.7;
+  }
+  .desc-jp {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 12px;
+    color: var(--quiet);
+    margin-top: 3px;
+    letter-spacing: 0.06em;
+  }
+
+  .links {
+    margin-top: 60px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+  }
+  .link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 2px;
+    border-bottom: 1px solid var(--hairline);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .link .label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    flex-shrink: 0;
+  }
+  .link .value {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-align: right;
+    word-break: break-all;
+  }
+  .link:hover .value, .link:focus-visible .value { color: var(--amp); }
+  .link:focus-visible { outline: 1px solid var(--amp); outline-offset: 4px; }
+
+  footer {
+    margin-top: 72px;
+    font-size: 10.5px;
+    color: var(--quiet);
+    letter-spacing: 0.08em;
+    line-height: 2;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+
+  /* quiet entrance */
+  @media (prefers-reduced-motion: no-preference) {
+    main > * { opacity: 0; transform: translateY(8px); animation: rise .8s ease forwards; }
+    main > *:nth-child(2) { animation-delay: .12s; }
+    main > *:nth-child(3) { animation-delay: .24s; }
+    main > *:nth-child(4) { animation-delay: .36s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+  <div class="ghost" aria-hidden="true">&amp;</div>
+  <main>
+    <header>
+      <h1 class="name">Kohei Yamashita</h1>
+      <div class="name-jp">山下 耕平</div>
+      <div class="loc">Tokyo, Japan</div>
+    </header>
+
+    <section class="lines" aria-label="What I do">
+      <div>
+        <div class="role">Futures <span class="amp">&amp;</span> Foresight</div>
+        <p class="desc">Building tools for demand &amp; decisions.</p>
+        <p class="desc-jp">需要と意思決定の道具をつくる ― 未来の目利き</p>
+      </div>
+      <div>
+        <div class="role">Wine <span class="amp">&amp;</span> Sake</div>
+        <p class="desc">WSET Level 3 · Sake Diploma · hosting gatherings in Tokyo.</p>
+        <p class="desc-jp">東京でワイン会・日本酒会をひらく ― ワインと日本酒の見つけ役</p>
+      </div>
+    </section>
+
+    <nav class="links" aria-label="Links">
+      <a class="link" href="mailto:kohei.yamashita1226@gmail.com">
+        <span class="label">Email</span>
+        <span class="value">kohei.yamashita1226@gmail.com</span>
+      </a>
+      <!-- TODO: デモ公開後に有効化
+      <a class="link" href="https://DEMO_URL_HERE">
+        <span class="label">Demo</span>
+        <span class="value">Sakiyomi-kun — demand forecasting</span>
+      </a>
+      -->
+      <!-- TODO: LinkedIn準備後に有効化
+      <a class="link" href="https://www.linkedin.com/in/YOUR_ID">
+        <span class="label">LinkedIn</span>
+        <span class="value">linkedin.com/in/YOUR_ID</span>
+      </a>
+      -->
+      <!-- TODO: X準備後に有効化
+      <a class="link" href="https://x.com/YOUR_HANDLE">
+        <span class="label">X</span>
+        <span class="value">@YOUR_HANDLE</span>
+      </a>
+      -->
+    </nav>
+
+    <footer>
+      WSET Level 3 ・ J.S.A. ワインエキスパート ・ SAKE DIPLOMA
+    </footer>
+  </main>
+</body>
+</html>
